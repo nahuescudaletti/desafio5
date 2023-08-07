@@ -6,8 +6,6 @@ import __dirname from './utils.js';
 import { connect } from 'mongoose';
 import indexRouter from './routes/indexRouter.js';
 
-
-
 const app = express (); 
 
 

@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
+    <title>Carritos</title>
 </head>
 <body>
- <div class="container mt-5">
-        <h1 class="mb-4">Productos:</h1>
+    <div class="container mt-5">
+        <h1 class="mb-4">Carritos:</h1>
         <ul class="list-group">
             {{#each all}}
             <li class="list-group-item">
-                <h4 class="mb-3">{{this.name}}</h4>
-                <p><strong>Description:</strong> {{this.description}}</p>
-                <p><strong>Stock:</strong> {{this.stock}}</p>
-                <p><strong>Price:</strong> {{this.price}}</p>
+                <h4 class="mb-3">Carrito ID: {{this._id}}</h4>
+                <h5>Productos:</h5>
+                <ul>
+                    {{#each this.products}}
+                    <li class="list-group-item">{{this.name}}</li>
+                    {{/each}}
+                </ul>
             </li>
             {{/each}}
         </ul>

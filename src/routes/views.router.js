@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import Product from '../models/product.js';
+import Cart from '../models/Cart.js';
+import Product from '../models/Product.js';
 
 const router = Router();
 
@@ -18,13 +19,15 @@ router.get('/products', async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+});
 
-//    try {
-//         let allProducts = await Product.find().toArray();
-//         res.render('productsMongoDB', { all: allProducts });
-//     } catch (error) {
-//         res.status(500).send('Error al obtener los productos.');
-//     }
+router.get('/carts', async (req, res, next) => {
+  try {
+    const allCarts = await Cart.find().populate('products').lean().exec();
+    res.render('cartsMongoDB', { all: allCarts });
+  } catch (error) {
+    next(error);
+  }
 });
 
 export default router;

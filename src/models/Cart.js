@@ -1,15 +1,15 @@
-// import { model, Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
-// const cartSchema = new Schema({
-//     products: [
-//         {
-//             type: Schema.Types.ObjectId,
-//             ref: 'Product',
-//             required: true,
-//         },
-//     ],
-// });
+const cartSchema = new Schema({
+    products: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'products',
+            required: true,
+        },
+    ],
+});
 
-// const Cart = model('Cart', cartSchema);
+const Cart = model('Cart', cartSchema);
 
-// export default Cart;
+export default Cart;
