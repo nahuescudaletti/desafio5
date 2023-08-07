@@ -3,6 +3,10 @@ import viewsRouter from './routes/views.router.js';
 import { Server } from 'socket.io';
 import handlebars from 'express-handlebars';
 import __dirname from './utils.js';
+import { connect } from 'mongoose';
+import indexRouter from './routes/indexRouter.js';
+
+
 
 const app = express (); 
 
@@ -19,8 +23,16 @@ app.set('view engine', 'handlebars');
 
 
 app.use  ('/', viewsRouter);
+app.use ('/api', indexRouter);
 
-const server = app.listen(8080, ()=> console.log("Listening 8080"))
+const PORT = 8080
+const ready=()=>{
+    console.log("server listening" +PORT)
+    connect('mongodb+srv://nahuelscudaletti:1234@cluster0.oeqaokf.mongodb.net/integrador')
+    .then(()=>console.log('db connected'))
+    .catch(err=>console.log(err))
+}
+const server = app.listen(PORT,ready)//y esa aplicación de express está escuchando en un puerto 
 const io = new Server (server);
 
 
